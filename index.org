@@ -1,0 +1,15 @@
+* adamfallon.com
+Welcome to my website.
+
+I am a software engineer, living in London.
+
+Currently working on something in stealth. Ex-Trainline, Rightmove.
+
+** Support
+Here are some causes I care about:
+- [[https://www.eff.org][EFF]]
+
+  
+** Links
+- [[https://www.linkedin.com/in/adam-fallon-4bb4b1300/][LinkedIn]]
+- [[https://github.com/afallon02][Github]]  

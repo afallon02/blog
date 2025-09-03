@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+DC="${DC:-exec}"
+
+# If we're running in CI we need to disable TTY allocation for docker compose
+# commands that enable it by default, such as exec and run.
+TTY=""
+if [[ ! -t 1 ]]; then
+  TTY="-T"
+fi
+
+function build {
+  echo "Building site..."
+  echo "-> Cleaning up old build..."
+  rm -rf site
+  mkdir -p site
+  echo "-> Copying static assets..."
+  rsync -a --exclude='*.org' --exclude='run' --exclude='.git' --exclude='site' ./ site/
+
+  echo "-> Converting .org files to .html..."
+  find . -path ./site -prune -o -name "*.org" -print | while read -r org_file; do
+      local dest_html_file="site/${org_file%.org}.html"
+      local src_html_file="${org_file%.org}.html"
+      echo "   - ${org_file} -> ${dest_html_file}"
+      mkdir -p "$(dirname "$dest_html_file")"
+      emacs --batch "${org_file}" --eval "(setq org-export-with-toc nil)" --eval "(setq org-html-postamble nil)" --funcall org-html-export-to-html
+      mv "${src_html_file}" "${dest_html_file}"
+  done
+
+  echo "Build complete. Your site is in the 'site' directory."
+}
+    
+
+function help {
+  printf "%s <task> [args]\n\nTasks:\n" "${0}"
+  compgen -A function | grep -v "^_" | cat -n
+  printf "\nExtended help:\n  Each task has comments for general usage\n"
+}
+
+TIMEFORMAT=$'\nTask completed in %3lR'
+time "${@:-help}"
