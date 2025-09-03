@@ -15,14 +15,14 @@ fi
 function build {
   echo "Building site..."
   echo "-> Cleaning up old build..."
-  rm -rf site
-  mkdir -p site
+  rm -rf docs
+  mkdir -p docs
   echo "-> Copying static assets..."
-  rsync -a --exclude='*.org' --exclude='run' --exclude='.git' --exclude='site' ./ site/
+  rsync -a --exclude='*.org' --exclude='run' --exclude='.git' --exclude='docs' ./ docs/
 
   echo "-> Converting .org files to .html..."
-  find . -path ./site -prune -o -name "*.org" -print | while read -r org_file; do
-      local dest_html_file="site/${org_file%.org}.html"
+  find . -path ./docs -prune -o -name "*.org" -print | while read -r org_file; do
+      local dest_html_file="docs/${org_file%.org}.html"
       local src_html_file="${org_file%.org}.html"
       echo "   - ${org_file} -> ${dest_html_file}"
       mkdir -p "$(dirname "$dest_html_file")"
@@ -30,7 +30,7 @@ function build {
       mv "${src_html_file}" "${dest_html_file}"
   done
 
-  echo "Build complete. Your site is in the 'site' directory."
+  echo "Build complete. Your site is in the 'docs' directory."
 }
     
 
