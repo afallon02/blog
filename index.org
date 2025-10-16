@@ -7,9 +7,13 @@ Currently working on something in stealth. Ex-Trainline, Rightmove.
 
 ** Support
 Here are some causes I care about:
-- [[https://www.eff.org][EFF]]
+*** [[https://www.eff.org][EFF]]
+**** The EFF fights to defend digital privacy, free speech, and innovation
+*** [[https://www.frame.work][Framework]]
+**** Framework makes laptops you can repair yourself.
 
   
 ** Links
 - [[https://www.linkedin.com/in/adam-fallon-4bb4b1300/][LinkedIn]]
 - [[https://github.com/afallon02][Github]]  
+- [[https://bsky.app/profile/adamfallon.bsky.social][BlueSky]]

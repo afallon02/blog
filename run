@@ -26,13 +26,25 @@ function build {
       local src_html_file="${org_file%.org}.html"
       echo "   - ${org_file} -> ${dest_html_file}"
       mkdir -p "$(dirname "$dest_html_file")"
-      emacs --batch "${org_file}" --eval "(setq org-export-with-toc nil)" --eval "(setq org-html-postamble nil)" --funcall org-html-export-to-html
+      emacs --batch "${org_file}" --eval "(setq org-export-with-toc nil)" --eval "(setq org-html-postamble nil)" --eval "(setq org-export-with-section-numbers nil)" --funcall org-html-export-to-html
       mv "${src_html_file}" "${dest_html_file}"
   done
 
+  echo "-> Copying CNAME file..."
+  cp CNAME docs/CNAME
+
   echo "Build complete. Your site is in the 'docs' directory."
 }
-    
+
+function run-local {
+  echo "Running local server on http://localhost:8000..."
+  python3 -m http.server 3000 --directory docs
+}    
+
+function build-and-run-local {
+  build
+  run-local
+}
 
 function help {
   printf "%s <task> [args]\n\nTasks:\n" "${0}"
