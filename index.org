@@ -5,6 +5,10 @@ I am a software engineer, living in London.
 
 Currently working on something in stealth. Ex-Trainline, Rightmove.
 
+** Projects
+*** [[https://whathappenedin2007.com/][What Happened in 2007?]]
+This website charts many detrimental trends since the dawn of the iPhone, including teen depression, lost productivity, increase in sleep disorders, and loneliness.
+
 ** Support
 Here are some causes I care about:
 *** [[https://www.eff.org][EFF]]
