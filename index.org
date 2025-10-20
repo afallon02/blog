@@ -9,6 +9,19 @@ Currently working on something in stealth. Ex-Trainline, Rightmove.
 *** [[https://whathappenedin2007.com/][What Happened in 2007?]]
 This website charts many detrimental trends since the dawn of the iPhone, including teen depression, lost productivity, increase in sleep disorders, and loneliness.
 
+** Posts
+*** [[https://archive.ph/B9gBD][Using LLM as a Translator]]
+Travel disruptions can be one of the most frustrating moments customers of Trainline.
+Miscommunication, especially when traveling internationally, amplifies these challenges.
+At Trainline, we identified a critical gap: disruption messages aren’t translated for customers outside their native language.
+*** [[https://archive.ph/4P2R5][Searching a data breach with ElasticSearch]]
+Facebook managed to somehow degrade user trust further when 500m user records showed up online. The breach included users email, location, work place and most concerningly, phone numbers. I was curious if I was affected as I have an account on many of their services.
+Thankfully I was not, but after scanning through the files with grep I wondered if I could do it an easier way. So I turned to Elasticsearch.
+*** [[https://archive.ph/cHJQU][Recreating YikYak with Postgres]]
+YikYak was an anonymous social network that used your location to show you posts 5km around you. Users of the app could create new posts and the people around them could view the posts and vote up or down.
+*** [[https://archive.ph/qAhSD][On Device Network Logging for iOS]]
+In the iOS team we noticed that - frequently - when doing release testing, we would come across bugs or issues when interacting with back end services that we didn’t know how to diagnose without some help from another team. This conversation id is critical to diagnosing the issue in a timely fashion, and without it, you are making the process tedious and frustrating for the person helping you. If you don’t have it the ability to debug your issue becomes more difficult.
+
 ** Support
 Here are some causes I care about:
 *** [[https://www.eff.org][EFF]]
