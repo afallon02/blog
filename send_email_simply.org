@@ -122,6 +122,12 @@ And that function looks like this:
   }
 #+end_src
 
+And that sends me an email like this
+#+NAME: fig:diskspace
+#+CAPTION: Disk Space Email
+#+ATTR_HTML: :width 100%
+[[file:imgs/email_disk.png]]
+
 But I've got more complicated things like backups going to tarsnap that have conditional subject lines:
 #+begin_src shell
 function create_backup {
@@ -160,6 +166,14 @@ function create_backup {
     rm "${TARSNAP_OUTPUT_FILENAME}"
 }
 #+end_src
+Which looks like this
+
+#+NAME: fig:tarsnap
+#+CAPTION: TarSnap Log
+#+ATTR_HTML: :width 100%
+[[file:imgs/email_tarsnap.png]]
+
+
 
 * Conclusion
 

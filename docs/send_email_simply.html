@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-10-21 Tue 22:12 -->
+<!-- 2025-10-21 Tue 22:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>A simple way to send emails using docker and bash</title>
@@ -197,9 +197,9 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">A simple way to send emails using docker and bash</h1>
-<div id="outline-container-orge081685" class="outline-2">
-<h2 id="orge081685">Introduction</h2>
-<div class="outline-text-2" id="text-orge081685">
+<div id="outline-container-orgdc07f62" class="outline-2">
+<h2 id="orgdc07f62">Introduction</h2>
+<div class="outline-text-2" id="text-orgdc07f62">
 <p>
 I have a home server that I run a bunch of Docker containers on.
 </p>
@@ -221,9 +221,9 @@ Are there better ways of doing this? I am sure there are - but this was quick, e
 </p>
 </div>
 </div>
-<div id="outline-container-org185bf08" class="outline-2">
-<h2 id="org185bf08">The Components</h2>
-<div class="outline-text-2" id="text-org185bf08">
+<div id="outline-container-org9cf3aa2" class="outline-2">
+<h2 id="org9cf3aa2">The Components</h2>
+<div class="outline-text-2" id="text-org9cf3aa2">
 <ul class="org-ul">
 <li>Gmail account with an App Password</li>
 <li>Docker compose running bytemark/smtp</li>
@@ -232,9 +232,9 @@ Are there better ways of doing this? I am sure there are - but this was quick, e
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbab22f4" class="outline-2">
-<h2 id="orgbab22f4">Gmail Account</h2>
-<div class="outline-text-2" id="text-orgbab22f4">
+<div id="outline-container-org82e7cf3" class="outline-2">
+<h2 id="org82e7cf3">Gmail Account</h2>
+<div class="outline-text-2" id="text-org82e7cf3">
 <p>
 I am sure other providers have SMTP support, but I use Gmail (if you have other steps for other providers - my blog is on github and you can raise a PR if you would like! <a href="https://github.com/afallon02/blog">https://github.com/afallon02/blog</a>)
 </p>
@@ -244,9 +244,9 @@ These docs detail how to set up an app password for a Google Account: <a href="h
 </p>
 </div>
 </div>
-<div id="outline-container-org811559b" class="outline-2">
-<h2 id="org811559b">Docker Compose running bytemark/smtp</h2>
-<div class="outline-text-2" id="text-org811559b">
+<div id="outline-container-orgdc3759f" class="outline-2">
+<h2 id="orgdc3759f">Docker Compose running bytemark/smtp</h2>
+<div class="outline-text-2" id="text-orgdc3759f">
 <p>
 I use Docker Compose for everything because I find it easy to use. This compose file sets up a SMTP server that can handle sending emails.
 </p>
@@ -272,9 +272,9 @@ services:
 </div>
 </div>
 </div>
-<div id="outline-container-org0437632" class="outline-2">
-<h2 id="org0437632">Simple Bash Script</h2>
-<div class="outline-text-2" id="text-org0437632">
+<div id="outline-container-org0f0972e" class="outline-2">
+<h2 id="org0f0972e">Simple Bash Script</h2>
+<div class="outline-text-2" id="text-org0f0972e">
 <p>
 So I want to send email from a bunch of places.
 </p>
@@ -346,9 +346,9 @@ echo "Script finished."
 </div>
 </div>
 </div>
-<div id="outline-container-org577f2f7" class="outline-2">
-<h2 id="org577f2f7">Calling it</h2>
-<div class="outline-text-2" id="text-org577f2f7">
+<div id="outline-container-org3b32b0c" class="outline-2">
+<h2 id="org3b32b0c">Calling it</h2>
+<div class="outline-text-2" id="text-org3b32b0c">
 <p>
 Here is the most basic use. I have a big bash script on my server called "run" and cron periodically calls functions in it like so:
 </p>
@@ -370,6 +370,16 @@ And that function looks like this:
           "Disk Usage: $now"
 }
 </pre>
+</div>
+
+<p>
+And that sends me an email like this
+</p>
+
+<div id="org0c36d5c" class="figure">
+<p><img src="imgs/email_disk.png" alt="email_disk.png" width="100%" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Disk Space Email</p>
 </div>
 
 <p>
@@ -413,11 +423,21 @@ But I've got more complicated things like backups going to tarsnap that have con
 }
 </pre>
 </div>
+<p>
+Which looks like this
+</p>
+
+
+<div id="org73f989e" class="figure">
+<p><img src="imgs/email_tarsnap.png" alt="email_tarsnap.png" width="100%" />
+</p>
+<p><span class="figure-number">Figure 2: </span>TarSnap Log</p>
 </div>
 </div>
-<div id="outline-container-orge77c07c" class="outline-2">
-<h2 id="orge77c07c">Conclusion</h2>
-<div class="outline-text-2" id="text-orge77c07c">
+</div>
+<div id="outline-container-org9a22777" class="outline-2">
+<h2 id="org9a22777">Conclusion</h2>
+<div class="outline-text-2" id="text-org9a22777">
 <p>
 That's it! Just wanted to share because I thought it was neat. I don't know why I thought it would be really hard to do this, but it was fine.
 </p>
