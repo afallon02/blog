@@ -10,6 +10,10 @@ Currently working on something in stealth. Ex-Trainline, Rightmove.
 This website charts many detrimental trends since the dawn of the iPhone, including teen depression, lost productivity, increase in sleep disorders, and loneliness.
 
 ** Posts
+*** [[file:send_email_simply.org][A simple way to send emails using docker and bash]]
+Ever want to just send yourself an email when some task on your computer was finished?
+
+Turns out it is really simple with docker and bash!
 *** [[https://archive.ph/B9gBD][Using LLM as a Translator]]
 Travel disruptions can be one of the most frustrating moments customers of Trainline.
 Miscommunication, especially when traveling internationally, amplifies these challenges.

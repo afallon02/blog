@@ -6,7 +6,7 @@
 <!-- 2025-10-21 Tue 22:12 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>A simple way to send emails using docker and bash</title>
 <meta name="author" content="Adam Fallon" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
@@ -196,119 +196,231 @@
 </head>
 <body>
 <div id="content" class="content">
-<div id="outline-container-org8b22560" class="outline-2">
-<h2 id="org8b22560">adamfallon.com</h2>
-<div class="outline-text-2" id="text-org8b22560">
+<h1 class="title">A simple way to send emails using docker and bash</h1>
+<div id="outline-container-orge081685" class="outline-2">
+<h2 id="orge081685">Introduction</h2>
+<div class="outline-text-2" id="text-orge081685">
 <p>
-Welcome to my website.
+I have a home server that I run a bunch of Docker containers on.
 </p>
 
 <p>
-I am a software engineer, living in London.
+Very often I want to run some automated job on the machine, but I don't want to have to check when it is done. One example being periodic backups that I want to know the status of.
 </p>
 
 <p>
-Currently working on something in stealth. Ex-Trainline, Rightmove.
-</p>
-</div>
-<div id="outline-container-org7e35f33" class="outline-3">
-<h3 id="org7e35f33">Projects</h3>
-<div class="outline-text-3" id="text-org7e35f33">
-</div>
-<div id="outline-container-org44fd468" class="outline-4">
-<h4 id="org44fd468"><a href="https://whathappenedin2007.com/">What Happened in 2007?</a></h4>
-<div class="outline-text-4" id="text-org44fd468">
-<p>
-This website charts many detrimental trends since the dawn of the iPhone, including teen depression, lost productivity, increase in sleep disorders, and loneliness.
-</p>
-</div>
-</div>
-</div>
-<div id="outline-container-org5cd34bf" class="outline-3">
-<h3 id="org5cd34bf">Posts</h3>
-<div class="outline-text-3" id="text-org5cd34bf">
-</div>
-<div id="outline-container-orga696ddf" class="outline-4">
-<h4 id="orga696ddf"><a href="send_email_simply.html">A simple way to send emails using docker and bash</a></h4>
-<div class="outline-text-4" id="text-orga696ddf">
-<p>
-Ever want to just send yourself an email when some task on your computer was finished?
+Sending an instant message or even better (for me at least) an email to say when something is done would be very nice.
 </p>
 
 <p>
-Turns out it is really simple with docker and bash!
+I thought this would be hard but it wasn't really.
 </p>
-</div>
-</div>
-<div id="outline-container-orgc7c6374" class="outline-4">
-<h4 id="orgc7c6374"><a href="https://archive.ph/B9gBD">Using LLM as a Translator</a></h4>
-<div class="outline-text-4" id="text-orgc7c6374">
+
 <p>
-Travel disruptions can be one of the most frustrating moments customers of Trainline.
-Miscommunication, especially when traveling internationally, amplifies these challenges.
-At Trainline, we identified a critical gap: disruption messages aren’t translated for customers outside their native language.
+Are there better ways of doing this? I am sure there are - but this was quick, easy and I can reuse it.
 </p>
 </div>
 </div>
-<div id="outline-container-org240c296" class="outline-4">
-<h4 id="org240c296"><a href="https://archive.ph/4P2R5">Searching a data breach with ElasticSearch</a></h4>
-<div class="outline-text-4" id="text-org240c296">
-<p>
-Facebook managed to somehow degrade user trust further when 500m user records showed up online. The breach included users email, location, work place and most concerningly, phone numbers. I was curious if I was affected as I have an account on many of their services.
-Thankfully I was not, but after scanning through the files with grep I wondered if I could do it an easier way. So I turned to Elasticsearch.
-</p>
-</div>
-</div>
-<div id="outline-container-org795ce1a" class="outline-4">
-<h4 id="org795ce1a"><a href="https://archive.ph/cHJQU">Recreating YikYak with Postgres</a></h4>
-<div class="outline-text-4" id="text-org795ce1a">
-<p>
-YikYak was an anonymous social network that used your location to show you posts 5km around you. Users of the app could create new posts and the people around them could view the posts and vote up or down.
-</p>
-</div>
-</div>
-<div id="outline-container-org6eb07cc" class="outline-4">
-<h4 id="org6eb07cc"><a href="https://archive.ph/qAhSD">On Device Network Logging for iOS</a></h4>
-<div class="outline-text-4" id="text-org6eb07cc">
-<p>
-In the iOS team we noticed that - frequently - when doing release testing, we would come across bugs or issues when interacting with back end services that we didn’t know how to diagnose without some help from another team. This conversation id is critical to diagnosing the issue in a timely fashion, and without it, you are making the process tedious and frustrating for the person helping you. If you don’t have it the ability to debug your issue becomes more difficult.
-</p>
-</div>
-</div>
-</div>
-<div id="outline-container-org4d71cae" class="outline-3">
-<h3 id="org4d71cae">Support</h3>
-<div class="outline-text-3" id="text-org4d71cae">
-<p>
-Here are some causes I care about:
-</p>
-</div>
-<div id="outline-container-orgfd879d1" class="outline-4">
-<h4 id="orgfd879d1"><a href="https://www.eff.org">EFF</a></h4>
-<div class="outline-text-4" id="text-orgfd879d1">
-</div>
+<div id="outline-container-org185bf08" class="outline-2">
+<h2 id="org185bf08">The Components</h2>
+<div class="outline-text-2" id="text-org185bf08">
 <ul class="org-ul">
-<li><a id="orga9fbb82"></a>The EFF fights to defend digital privacy, free speech, and innovation<br /></li>
-</ul>
-</div>
-<div id="outline-container-org8dbf3d9" class="outline-4">
-<h4 id="org8dbf3d9"><a href="https://www.frame.work">Framework</a></h4>
-<div class="outline-text-4" id="text-org8dbf3d9">
-</div>
-<ul class="org-ul">
-<li><a id="orged73e16"></a>Framework makes laptops you can repair yourself.<br /></li>
+<li>Gmail account with an App Password</li>
+<li>Docker compose running bytemark/smtp</li>
+<li>Simple bash script called "send<sub>mail.sh</sub>" in /opt (or anywhere you want really)</li>
+<li>Cron</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9faad88" class="outline-3">
-<h3 id="org9faad88">Links</h3>
-<div class="outline-text-3" id="text-org9faad88">
-<ul class="org-ul">
-<li><a href="https://www.linkedin.com/in/adam-fallon-4bb4b1300/">LinkedIn</a></li>
-<li><a href="https://github.com/afallon02">Github</a></li>
-<li><a href="https://bsky.app/profile/adamfallon.bsky.social">BlueSky</a></li>
-</ul>
+<div id="outline-container-orgbab22f4" class="outline-2">
+<h2 id="orgbab22f4">Gmail Account</h2>
+<div class="outline-text-2" id="text-orgbab22f4">
+<p>
+I am sure other providers have SMTP support, but I use Gmail (if you have other steps for other providers - my blog is on github and you can raise a PR if you would like! <a href="https://github.com/afallon02/blog">https://github.com/afallon02/blog</a>)
+</p>
+
+<p>
+These docs detail how to set up an app password for a Google Account: <a href="https://support.google.com/accounts/answer/185833?hl=en">https://support.google.com/accounts/answer/185833?hl=en</a> 
+</p>
 </div>
+</div>
+<div id="outline-container-org811559b" class="outline-2">
+<h2 id="org811559b">Docker Compose running bytemark/smtp</h2>
+<div class="outline-text-2" id="text-org811559b">
+<p>
+I use Docker Compose for everything because I find it easy to use. This compose file sets up a SMTP server that can handle sending emails.
+</p>
+
+<p>
+Here is the image I am using: <a href="https://hub.docker.com/r/bytemark/smtp/">https://hub.docker.com/r/bytemark/smtp/</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml">version: '3'
+services:
+  mail:
+    image: bytemark/smtp
+    restart: always
+    environment:
+      RELAY_HOST: smtp.gmail.com
+      RELAY_PORT: 587
+      RELAY_USERNAME: &lt;EMAIL_USERNAME@host.com&gt;
+      RELAY_PASSWORD: "&lt;APP_PASSWORD&gt;" # Add secret however you want
+    ports:
+      - "127.0.0.1:2525:25"
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0437632" class="outline-2">
+<h2 id="org0437632">Simple Bash Script</h2>
+<div class="outline-text-2" id="text-org0437632">
+<p>
+So I want to send email from a bunch of places.
+</p>
+
+<p>
+I've got emails that:
+</p>
+<ul class="org-ul">
+<li>Show me how much disk is left on the machine.</li>
+<li>What new errors have cropped up in journalctl.</li>
+<li>Send me summary of logs (I pass the logs to gpt-oss-20b and then send that as the subject)</li>
+</ul>
+
+<p>
+Anyway, I expected I would want a simple reusable way to send emails by just detailing the to and from email addresses, subject line and body
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">#!/bin/bash
+
+# Script to send an email using the local Docker SMTP container.
+# This version reads the email body from standard input (stdin).
+#
+# Usage:
+# ./send-email.sh "from@example.com" "to@recipient.com" "Test Subject"
+# (and then pipe the body to it, e.g. echo "This is the body." | ./send-email.sh ...)
+
+# --- Config ---
+SMTP_URL="smtp://127.0.0.1:2525"
+
+# --- Check for curl ---
+if ! command -v curl &amp;&gt; /dev/null
+then
+    echo "Error: 'curl' is not installed. Please install it to use this script."
+    exit 1
+fi
+
+if [ "$#" -ne 3 ]; then
+    echo "Usage: $0 \"from@address.com\" \"to@address.com\" \"Subject Line\""
+    echo "       (Email body must be piped via stdin)"
+    exit 1
+fi
+
+FROM_ADDRESS="$1"
+TO_ADDRESS="$2"
+SUBJECT_LINE="$3"
+
+# --- Send the email ---
+echo "Connecting to $SMTP_URL..."
+echo "From: $FROM_ADDRESS"
+echo "To: $TO_ADDRESS"
+echo "---"
+
+# We create a subshell to prepend the "Subject:" line to the
+# incoming stdin (represented by 'cat -') and pipe it all directly to curl.
+(
+    echo "Subject: $SUBJECT_LINE"
+    echo "" # Required blank line between headers and body
+    cat -  # This command reads from stdin and passes it on
+) | curl -v \
+    --url "$SMTP_URL" \
+    --mail-from "$FROM_ADDRESS" \
+    --mail-rcpt "$TO_ADDRESS" \
+    --upload-file -
+
+echo "---"
+echo "Script finished."
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org577f2f7" class="outline-2">
+<h2 id="org577f2f7">Calling it</h2>
+<div class="outline-text-2" id="text-org577f2f7">
+<p>
+Here is the most basic use. I have a big bash script on my server called "run" and cron periodically calls functions in it like so:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">30 21 * * * /bin/bash /opt/run disk_usage
+</pre>
+</div>
+
+<p>
+And that function looks like this:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">function disk_usage {
+  disk_usage=$(df -h / | awk 'END{print $4}')
+  now=$(date +%Y-%m-%d_%H-%M-%S)
+  echo "$disk_usage" | /opt/mail/send_email.sh \
+          "adam+alerts@adamfallon.com" \
+          "adam@adamfallon.com" \
+          "Disk Usage: $now"
+}
+</pre>
+</div>
+
+<p>
+But I've got more complicated things like backups going to tarsnap that have conditional subject lines:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">function create_backup {
+    COMPUTER_NAME=$(uname -n)
+    NOW=$(date +%Y-%m-%d_%H-%M-%S)
+    ARCHIVE_NAME=${COMPUTER_NAME}-${NOW}
+    SOURCE_FOLDERS=(
+        "/home/user/Shared/docs"
+        "/home/user/Shared/books"
+    )
+    FROM_EMAIL="adam+alerts@adamfallon.com"
+    TO_EMAIL="adam@adamfallon.com"
+    TARSNAP_OUTPUT_FILENAME=/tmp/tarsnap-output-temporary.log
+
+    echo "Starting tarsnap backup for: ${SOURCE_FOLDERS[*]}"
+    echo "Creating tarsnap archive: $ARCHIVE_NAME"
+
+    sudo tarsnap -c -v -f "$ARCHIVE_NAME" \
+        --keyfile /root/tarsnap.key \
+        "${SOURCE_FOLDERS[@]}" &gt;${TARSNAP_OUTPUT_FILENAME} 2&gt;&amp;1
+
+    if [ $? -eq 0 ]; then
+        subject="✅ Tarsnap backup success: $ARCHIVE_NAME"
+    else
+        subject="❌ Tarsnap backup FAILED: $ARCHIVE_NAME"
+    fi
+    echo "$subject"
+
+    # Send the email
+    /opt/mail/send_email.sh \
+        "$FROM_EMAIL" \
+        "$TO_EMAIL" \
+        "$subject" &lt; "${TARSNAP_OUTPUT_FILENAME}"
+
+    # Clean up the temporary log file
+    rm "${TARSNAP_OUTPUT_FILENAME}"
+}
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge77c07c" class="outline-2">
+<h2 id="orge77c07c">Conclusion</h2>
+<div class="outline-text-2" id="text-orge77c07c">
+<p>
+That's it! Just wanted to share because I thought it was neat. I don't know why I thought it would be really hard to do this, but it was fine.
+</p>
 </div>
 </div>
 </div>
