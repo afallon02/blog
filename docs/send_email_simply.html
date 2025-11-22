@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-10-22 Wed 07:14 -->
+<!-- 2025-11-22 Sat 22:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>A simple way to send emails using docker and bash</title>
 <meta name="author" content="Adam Fallon" />
 <meta name="generator" content="Org Mode" />
-<style type="text/css">
+<style>
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -197,9 +197,10 @@
 <body>
 <div id="content" class="content">
 <h1 class="title">A simple way to send emails using docker and bash</h1>
-<div id="outline-container-org4310631" class="outline-2">
-<h2 id="org4310631">Introduction</h2>
-<div class="outline-text-2" id="text-org4310631">
+
+<div id="outline-container-org39b5d4b" class="outline-2">
+<h2 id="org39b5d4b">Introduction</h2>
+<div class="outline-text-2" id="text-org39b5d4b">
 <p>
 I have a home server that I run a bunch of Docker containers on.
 </p>
@@ -221,9 +222,10 @@ Are there better ways of doing this? I am sure there are - but this was quick, e
 </p>
 </div>
 </div>
-<div id="outline-container-org32c7eb7" class="outline-2">
-<h2 id="org32c7eb7">The Components</h2>
-<div class="outline-text-2" id="text-org32c7eb7">
+
+<div id="outline-container-org81a2a20" class="outline-2">
+<h2 id="org81a2a20">The Components</h2>
+<div class="outline-text-2" id="text-org81a2a20">
 <ul class="org-ul">
 <li>Gmail account with an App Password</li>
 <li>Docker compose running bytemark/smtp</li>
@@ -232,9 +234,10 @@ Are there better ways of doing this? I am sure there are - but this was quick, e
 </ul>
 </div>
 </div>
-<div id="outline-container-org1bb94a8" class="outline-2">
-<h2 id="org1bb94a8">Gmail Account</h2>
-<div class="outline-text-2" id="text-org1bb94a8">
+
+<div id="outline-container-orge633dad" class="outline-2">
+<h2 id="orge633dad">Gmail Account</h2>
+<div class="outline-text-2" id="text-orge633dad">
 <p>
 I am sure other providers have SMTP support, but I use Gmail (if you have other steps for other providers - my blog is on github and you can raise a PR if you would like! <a href="https://github.com/afallon02/blog">https://github.com/afallon02/blog</a>)
 </p>
@@ -244,9 +247,10 @@ These docs detail how to set up an app password for a Google Account: <a href="h
 </p>
 </div>
 </div>
-<div id="outline-container-org0d836a4" class="outline-2">
-<h2 id="org0d836a4">Docker Compose running bytemark/smtp</h2>
-<div class="outline-text-2" id="text-org0d836a4">
+
+<div id="outline-container-org992ad9f" class="outline-2">
+<h2 id="org992ad9f">Docker Compose running bytemark/smtp</h2>
+<div class="outline-text-2" id="text-org992ad9f">
 <p>
 I use Docker Compose for everything because I find it easy to use. This compose file sets up a SMTP server that can handle sending emails.
 </p>
@@ -272,9 +276,9 @@ services:
 </div>
 </div>
 </div>
-<div id="outline-container-org7771e79" class="outline-2">
-<h2 id="org7771e79">Simple Bash Script</h2>
-<div class="outline-text-2" id="text-org7771e79">
+<div id="outline-container-org9652648" class="outline-2">
+<h2 id="org9652648">Simple Bash Script</h2>
+<div class="outline-text-2" id="text-org9652648">
 <p>
 So I want to send email from a bunch of places.
 </p>
@@ -346,9 +350,10 @@ echo "Script finished."
 </div>
 </div>
 </div>
-<div id="outline-container-org8bd59a1" class="outline-2">
-<h2 id="org8bd59a1">Calling it</h2>
-<div class="outline-text-2" id="text-org8bd59a1">
+
+<div id="outline-container-org99cb2e1" class="outline-2">
+<h2 id="org99cb2e1">Calling it</h2>
+<div class="outline-text-2" id="text-org99cb2e1">
 <p>
 Here is the most basic use. I have a big bash script on my server called "run" and cron periodically calls functions in it like so:
 </p>
@@ -365,9 +370,9 @@ And that function looks like this:
   disk_usage=$(df -h / | awk 'END{print $4}')
   now=$(date +%Y-%m-%d_%H-%M-%S)
   echo "$disk_usage" | /opt/mail/send_email.sh \
-          "adam+alerts@adamfallon.com" \
-          "adam@adamfallon.com" \
-          "Disk Usage: $now"
+        "adam+alerts@adamfallon.com" \
+        "adam@adamfallon.com" \
+        "Disk Usage: $now"
 }
 </pre>
 </div>
@@ -376,7 +381,7 @@ And that function looks like this:
 And that sends me an email like this
 </p>
 
-<div id="org738aa31" class="figure">
+<div id="org8fa4283" class="figure">
 <p><img src="imgs/email_disk.png" alt="email_disk.png" width="100%" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Disk Space Email</p>
@@ -428,16 +433,19 @@ Which looks like this
 </p>
 
 
-<div id="org13b37dc" class="figure">
+<div id="orge48c69a" class="figure">
 <p><img src="imgs/email_tarsnap.png" alt="email_tarsnap.png" width="100%" />
 </p>
 <p><span class="figure-number">Figure 2: </span>TarSnap Log</p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgeeeb6b4" class="outline-2">
-<h2 id="orgeeeb6b4">Conclusion</h2>
-<div class="outline-text-2" id="text-orgeeeb6b4">
+
+
+
+<div id="outline-container-org000c7e7" class="outline-2">
+<h2 id="org000c7e7">Conclusion</h2>
+<div class="outline-text-2" id="text-org000c7e7">
 <p>
 That's it! Just wanted to share because I thought it was neat. I don't know why I thought it would be really hard to do this, but it was fine.
 </p>
